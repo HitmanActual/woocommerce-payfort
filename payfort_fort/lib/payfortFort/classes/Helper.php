@@ -147,7 +147,11 @@ class Payfort_Fort_Helper extends Payfort_Fort_Super
 
     public function getCustomerIp()
     {
-        return $_SERVER['REMOTE_ADDR'];
+       // return $_SERVER['REMOTE_ADDR'];
+        
+        //-- on some shared hosting servers, $ _SERVER ['REMOTE_ADDR'] returns the IP of server, not visitor IP
+        return getenv('REMOTE_ADDR');
+        
     }
 
     public function getGatewayHost()
